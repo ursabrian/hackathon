@@ -1,11 +1,16 @@
+
 <?php
 //url = 'http://api.music.com/album';
 
 $IC = urlencode($_POST['IC']);   
 $Status = urlencode($_POST['Status']); 
-session_start();
-$bc= $_SESSION['bc'];
-$add= $_SESSION['Address'];
+
+
+
+
+
+
+
 
 
 
@@ -14,12 +19,10 @@ $username = "admin";
 $password = "XLjFk9GyelOgLB6W";
 $dbname = "hackathon";
 
-
-$dbic = $dbauth = $dbIN =$dbOUT =$dbDone="";
+$dbauth = $dbIN =$dbOUT =$totalactive="";
 $checkin=0;
 $checkout=0;
 $verifyICcheck=0;
-$addressmatch=0;
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -27,59 +30,78 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM `checktable` where NOT Done=1";
+$sql = "SELECT COUNT(`In_Time`) as 'in',COUNT(`out_time`) as 'out' FROM `checktable`";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
          
-       $dbic= $row["ic"];
-       $dbauth= $row["authID"];
-       $dbadd= $row["address"];
-       $dbIN= $row["In_Time"];
-       $dbOUT= $row["out_time"];
       
-       
-//checkIC exist
-if( $dbic==$IC){
-    
-    //checkAuthID exist
-    if( $dbauth==$bc){
-        $checkin=1;
-    }
-    //CheckOutTime Null
-    if($dbOUT!=null){
-        $checkout=1;
-    }
+       $dbIN= $row["in"];
+       $dbOUT= $row["out"];
+      
 
-       //CheckOutTime Null
-       if($dbadd==$add){
-        $addressmatch=1;
-    }
-     
-}
+//checkIC exist
+
 
 
 
     }
 } else {
-  echo "Already Update";
+   // echo "Check out:".$checkout."Check in:".$checkin."";
 }
 //conn->close();
 
+$totalactive=$dbIN-$dbOUT;
+
+
+
+$conn->close();
+$total="";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT COUNT(*) as 'total'FROM `user`";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+         
+      
+        $total= $row["total"];
+       
+      
+
+//checkIC exist
+
+
+
+
+    }
+} else {
+   // echo "Check out:".$checkout."Check in:".$checkin."";
+}
+//conn->close();
+
+$totalactive=$dbIN-$dbOUT;
 
 
 
 $conn->close();
 
 
+echo '{"in":"'.$dbIN.'","out": "'.$dbOUT.'","active": "'.$totalactive.'","total": "'.$total.'"}';
 
 
 
 
-
-
+/*
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -122,8 +144,8 @@ if( $verifyICcheck==1){
 if($Status=="IN"){
 
     if($checkout!=1){
-        if($checkin!=1 && $addressmatch!=1){
-            $sql = "INSERT INTO `checktable`(`ic`,`address`, `authID`, `In_Time`) VALUES ('".$IC."','".$add."','".$bc."','".date("Y-m-d H:i:s")."')";
+        if($checkin!=1){
+            $sql = "INSERT INTO `checktable`(`ic`, `authID`, `In_Time`) VALUES ('".$IC."','".$bc."','".date("Y-m-d H:i:s")."')";
             CallDatabase($sql);
 
            // Echo "Check In Successful";
@@ -138,14 +160,14 @@ if($Status=="IN"){
 
 if($Status=="OUT"){
     if($checkout!=1){
-        if($checkin==1 && $addressmatch==1){
-            $sql = "UPDATE `checktable` SET `out_time`='".date("Y-m-d H:i:s")."',`Done`=1 WHERE  authID='".$bc."'AND ic='".$IC."' AND `Address`='".$add."'";
+        if($checkin==1){
+            $sql = "UPDATE `checktable` SET `out_time`='".date("Y-m-d H:i:s")."',`Done`=1 WHERE  authID='".$bc."'AND ic='".$IC."'";
             CallDatabase($sql); 
-            Echo "Check Out Successful";
+            //Echo "Check Out Successful";
         }
     }
-   // echo $addressmatch;
-   // Echo "Check Out Successful";
+
+    Echo "Check Out Successful";
 }
 }else{
     echo "Invalid IC";
@@ -187,7 +209,7 @@ function CallDatabase($sql) {
 
    
 }
-
+*/
 
 //echo $IC."    ".$Status."    ".$bc; //Return the response back to AJAX, assuming it is already returned as JSON. Else encode it json_encode($response)
 

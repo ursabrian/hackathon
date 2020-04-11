@@ -66,7 +66,7 @@ session_start();
 $profileIC="";
 $profileIC = $_SESSION['ic'];
 if ($profileIC==null){
-  echo '<script>window.location.href = "https://cweedchow.ddns.net/hackathon/choice/Authorityform/"</script>';
+  echo '<script>window.location.href = "https://cweedsolution.ddns.net/hackathon/choice/Authorityform/"</script>';
 
 }
 

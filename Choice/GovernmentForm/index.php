@@ -71,16 +71,16 @@
 
         <?php
 // define variables and set to empty values
-$icErr =$pwErr= "";
- $ic = $pw= "";
+$usernameErr =$pwErr= "";
+ $username = $pw= "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  if (empty($_POST["ic"])) {
-    $icErr = "*Identification Card Number is required";
+  if (empty($_POST["username"])) {
+    $usernameErr = "*username not found";
     
   } else {
-    $ic = test_input($_POST["ic"]);
+    $username = test_input($_POST["username"]);
   }
 
 
@@ -108,7 +108,7 @@ function test_input($data) {
   <table>
   <form method="post"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
     <tr>
-        <td style="color:white";>IC:</td><td><input type="Text" name="ic" value="<?php echo $ic;?>"></input></td>
+        <td style="color:white";>Username:</td><td><input type="Text" name="username" value="<?php echo $username;?>"></input></td>
     </tr>
 
     <tr>
@@ -132,14 +132,14 @@ function test_input($data) {
 
 <?php
 $servername = "Cweedsolution.ddns.net";
-$username = "admin";
+$usernamex = "admin";
 $password = "XLjFk9GyelOgLB6W";
 $dbname = "hackathon";
 $check = false;
 
 
 
-if($ic==""){
+if($username==""){
   $check = true;
 
 }
@@ -153,35 +153,37 @@ if($check==false){
 
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+$conn = mysqli_connect($servername, $usernamex, $password, $dbname);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT * FROM `user`";
+$sql = "SELECT * FROM `gov`";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
         //echo "id: " . $row["ID"]. " - Name: " . $row["IC"]. " " . $row["Name"]. "<br>";
-       if( $ic==$row["IC"]){
+       if( $username==$row["Username"]){
         
         if( $pw==$row["Password"]){
 
           session_start();
 
-
-          $_SESSION['ic'] = $ic;
-          header("Location: /hackathon/choice/EndUserForm/Profile.php");
+          $un=$row["Business-code"];
+          $lv=$row["Business-code"];
+          $_SESSION['username'] = $un;
+          $_SESSION['Level'] = $lv;
+          header("Location: /hackathon/choice/GovernmentForm/Dashboard.php");
         
         }else{
           Echo "Wrong Password";
         }
 
      }else{
-        Echo "NO IC Exist";
+        Echo "NO username Exist";
      }
 
        }

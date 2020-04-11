@@ -131,9 +131,9 @@ function test_input($data) {
 
 
 <?php
-$servername = "Cweedchow.ddns.net";
+$servername = "Cweedsolution.ddns.net";
 $usernamex = "admin";
-$password = "admin";
+$password = "XLjFk9GyelOgLB6W";
 $dbname = "hackathon";
 $check = false;
 
@@ -172,8 +172,15 @@ if (mysqli_num_rows($result) > 0) {
 
           session_start();
 
+          $add=$row["Address"];
+         // echo "<script>alert('add:".$add."')</script>";
           $bc=$row["Business-code"];
           $_SESSION['bc'] = $bc;
+
+
+
+          $_SESSION['Address'] = $add;
+         
           header("Location: /hackathon/choice/Authorityform/Profile.php");
         
         }else{

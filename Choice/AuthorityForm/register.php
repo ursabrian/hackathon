@@ -234,9 +234,9 @@ function test_input($data) {
 
 
 <?php
-$servername = "Cweedchow.ddns.net";
-$username = "admin";
-$password = "admin";
+$servername = "Cweedsolution.ddns.net";
+$usernamex = "admin";
+$password = "XLjFk9GyelOgLB6W";
 $dbname = "hackathon";
 $check = false;
 
@@ -281,7 +281,7 @@ if($pw==""){
 
 if($check==false){
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $usernamex, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -292,7 +292,7 @@ $sql = "INSERT INTO `auth`(`Password`,`Username`, `Business-code`, `Name`, `cont
 if ($conn->query($sql) === TRUE) {
    
     echo '<script>alert("Register Success")</script>';
-    echo '<script>window.location.href = "https://cweedchow.ddns.net/hackathon/choice/Authorityform/"</script>';
+    echo '<script>window.location.href = "https://Cweedsolution.ddns.net/hackathon/choice/Authorityform/"</script>';
     ;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

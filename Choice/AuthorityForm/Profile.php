@@ -26,6 +26,12 @@
 
 <body id="page-top">
 
+
+<?php session_start();
+$bc= $_SESSION['bc'];
+if($bc==null){
+  echo '<script>window.location.href = "https://Cweedsolution.ddns.net/hackathon/choice/Authorityform/"</script>';
+}?>
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
@@ -84,7 +90,7 @@
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
-      Copyright &copy; Your Website 2019
+     
     </div>
   </footer>
 

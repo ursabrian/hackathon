@@ -2,10 +2,17 @@
 <head>
   <meta charset="utf-8">
   <title>Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
   <script src="./jsQR.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
   <style>
+
+
+
+
+
     body {
       font-family: 'Ropa Sans', sans-serif;
       color: #333;
@@ -153,6 +160,24 @@
 
 </head>
 <body id="body">
+
+
+<?php 
+
+session_start();
+$bc= $_SESSION['bc'];
+if($bc==null){
+  echo '<script>window.location.href = "https://Cweedsolution.ddns.net/hackathon/choice/Authorityform/"</script>';
+}
+?>
+<div class="w3-dropdown-hover">
+  <button class="w3-button w3-grey w3-xlarge" onclick="w3_open()">☰</button>
+  <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="https://Cweedsolution.ddns.net/hackathon/choice/Authorityform/" class="w3-bar-item w3-button">Back</a>
+    
+    </div>
+
+</div>
   <h1>Scanner</h1>
  
   <p></p>
@@ -274,7 +299,7 @@ function CheckFunction() {
             //Do something with the response:
            // alert("The album name is: " +response);
            
-           myFunction(response+value1);
+           myFunction(response);
            //outputStatus.innerText=response;
          
             //Look into JSON.parse and JSON.stringify for accessing data 

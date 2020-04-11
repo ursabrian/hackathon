@@ -193,9 +193,9 @@ function test_input($data) {
 
 
 <?php
-$servername = "Cweedchow.ddns.net";
+$servername = "Cweedsolution.ddns.net";
 $username = "admin";
-$password = "admin";
+$password = "XLjFk9GyelOgLB6W";
 $dbname = "hackathon";
 $check = false;
 
@@ -236,7 +236,7 @@ VALUES ('".$ic."','".$name."', '".$comment."','".$hp."','".$pw."')";
 if ($conn->query($sql) === TRUE) {
    
     echo '<script>alert("Register Success")</script>';
-    echo '<script>window.location.href = "http://cweedchow.ddns.net/hackathon/choice/enduserform"</script>';
+    echo '<script>window.location.href = "http://Cweedsolution.ddns.net/hackathon/choice/enduserform"</script>';
     ;
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

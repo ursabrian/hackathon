@@ -29,28 +29,10 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="/hackathon/">Cweed Solution</a>
-      <!--
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      -->
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-            <!--
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
 
-
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
-          </li>
-        
--->   
         
         </ul>
       </div>
@@ -65,7 +47,7 @@
         <h2 class="text-white-50 mx-auto mt-2 mb-5">To Search for the Potential spreads</h2>
         <a href="/hackathon/choice/enduserform/" class="btn btn-primary js-scroll-trigger"  margin-bottom="100px">Individual</a>
         <a href="/hackathon/choice/authorityform/" class="btn btn-primary js-scroll-trigger">Authority</a>
-        <a href="#about" class="btn btn-primary js-scroll-trigger">Government</a>
+        <a href="/hackathon/choice/Governmentform/" class="btn btn-primary js-scroll-trigger">Government</a>
       </div>
     </div>
   </header>
