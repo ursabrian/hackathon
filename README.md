@@ -2,9 +2,9 @@
 
 ## Preview
 
-[![Grayscale Preview](https://startbootstrap.com/assets/img/screenshots/themes/grayscale.png)](https://blackrockdigital.github.io/startbootstrap-grayscale/)
+[![Grayscale Preview](https://cweedsolution.ddns.net/git/newupdate.png)](https://cweedsolution.ddns.net/)
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-grayscale/)**
+**[View Live Preview](https://cweedsolution.ddns.net/)**
 
 
 
