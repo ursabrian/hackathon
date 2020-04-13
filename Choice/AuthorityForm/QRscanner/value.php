@@ -145,7 +145,7 @@ if($Status=="OUT"){
         }
     }
    // echo $addressmatch;
-   // Echo "Check Out Successful";
+    Echo "Check Out Successful";
 }
 }else{
     echo "Invalid IC";
